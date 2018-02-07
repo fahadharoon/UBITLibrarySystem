@@ -1,0 +1,170 @@
+﻿
+@using PagedList;
+@using PagedList.Mvc;
+
+@model IEnumerable<UbitLibrarySystem.Models.Book_Details>
+@{
+    ViewBag.Title = "Category";
+    Layout = "~/Views/Shared/_LayoutForBooks.cshtml";
+}
+
+<h2 style="text-align:center">Catalogue</h2>
+<br />
+
+
+<br />
+<br />
+
+<div align="center">
+    @using (Html.BeginForm("Category", "Book_Details", FormMethod.Get))
+    {
+        <b>Search By : </b>@Html.RadioButton("searchBy", "Title", true)<text>Title    </text>
+        @Html.RadioButton("searchBy", "Author")<text>Author    </text>
+        @Html.RadioButton("searchBy", "Category")<text>Category    </text>
+
+        @Html.TextBox("search")<input type="submit" value="Search " id="search" class="btn btn-info btn-sm  fa fa-search-plus" />
+
+
+
+    }
+</div>
+<br />
+<br />
+
+<!-- CATEGORIES -->
+
+
+
+
+
+@{Html.RenderAction("ProductCategory", "Category_Details");}
+
+
+<!-- /CATEGORIES -->
+<!-- DIALOUGE BOX -->
+
+<div class="container col-lg-10">
+
+    <div id="dialog" style="display: none">
+    </div>
+
+    <!-- /DIALOUGE BOX -->
+
+
+
+
+    <div class="row col-lg-12    " style="float : right">
+
+
+        @foreach (var item in Model)
+        {
+
+            <div class="col-sm-2">
+                <div class="my-list">
+
+                    <img src="@item.ImagePath" width="350" height="200" />
+                    <h5><b></b></h5>
+                    <span><b></b></span>
+                    <span class="pull-right"></span>
+                    <div class="offer"><b></b></div>
+                    <div class="detail">
+                        <h4></h4>
+                        <img src="@item.ImagePath" height="170" />
+                        <br />
+                        <br />
+                        <p class="btn btn-info btn-xs">
+                            @Html.ActionLink("Download", "DownloadforStudent", new { id = item.ISBN_Code }, new { style = "color:black" })
+
+
+                        </p>
+
+                        <p class="btn btn-info btn-xs" onclick="getDetails(this)" data-id="@item.ISBN_Code" data-toggle="modal" data-target="#detail-prod">
+                            Details
+
+                        </p>
+
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+</div>
+
+@*<center>
+
+
+
+    @Html.PagedListPager(Model, page =>
+    Url.Action("Category", new
+    {
+        page,
+        searchBy = Request.QueryString["searchBy"]
+        ,
+        search = Request.QueryString["search"],
+        sortBy = Request["sortBy"]
+    }), new PagedListRenderOptions()
+    { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true, DisplayItemSliceAndTotal = true })
+</center>*@
+
+
+
+<script>
+
+
+    var viewportWidth = window.innerWidth - 10;
+    var viewportHeight = window.innerHeight - 10;
+    if (viewportWidth > 700) viewportWidth = 700;
+    if (viewportHeight > 350) viewportHeight = 350;
+
+
+    $(function () {
+        $("#dialog").dialog({
+            height: viewportHeight,
+            width: viewportWidth,
+            autoOpen: false,
+            modal: true,
+            resizable: true,
+            position: {
+                my: "center top",
+                at: "center top",
+                of: window,
+                collision: "none"},
+
+            title: "Book Details",
+
+             create: function (event, ui) {
+                $(event.target).parent().css('position', 'fixed');
+            }
+        });
+    });
+
+    var getDetails = function (btnDetails) {
+        var isbn = btnDetails.dataset.id;
+        $.ajax({
+            type: "POST",
+            url: "GetBookDetails",
+            data: '{isbn: "' + isbn + '" }',
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (response) {
+                $('#dialog').html(response);
+                $('#dialog').dialog('open');
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+
+
+</script>

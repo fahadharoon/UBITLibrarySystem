@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "VerifyAccount";
+    Layout = "~/Views/Shared/_LayoutVerifyAccount.cshtml";
+}
+
+<h2 align="center">Verify Account!!!</h2>
+<br />
+@if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+{
+    <div class="container">
+        <div class="alert alert-success">
+            
+            <p align="center"><strong>Success!</strong>&nbsp;&nbsp;Your Account has been activated successfully. Click here to</p>
+            <br />
+            <center>
+                <a href="~/Login/Login" class="btn btn-success">Login</a>
+                
+            </center>
+
+
+        </div>
+    </div>
+
+}
+else
+{
+    <div class="container">
+        <div class="alert alert-danger">
+            <strong>Error!</strong> @ViewBag.Message
+        </div>
+        </div>
+        }

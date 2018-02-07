@@ -1,0 +1,53 @@
+﻿@model UbitLibrarySystem.Models.Student_Details
+
+@{
+    Layout = null;
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Student_Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Student_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Of_Birth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Of_Birth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Program)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Program)
+        </dd>
+
+       
+
+
+    </dl>
+</div>
+<p>
+    
+    @Html.ActionLink("Back to List", "IndexforStudentDetails")
+</p>

@@ -1,0 +1,72 @@
+﻿@model UbitLibrarySystem.Models.Borrower_Details
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+
+<h3 align ="center">Are you sure you want to delete this?</h3>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Borrower_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Borrower_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Borrower_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Borrower_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Borrowed_From_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Borrowed_From_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Borrowed_To_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Borrowed_To_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Book_Details.Book_Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Book_Details.Book_Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Staff_Details.Staff_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Staff_Details.Staff_Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color" align="center">
+            <input type="submit" value="Delete" class="btn btn-info" /> |
+            @Html.ActionLink("Back to Borrowers", "Index")
+        </div>
+    }
+</div>

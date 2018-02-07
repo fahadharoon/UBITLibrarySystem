@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LibraryModelStoreContainer" CdmEntityContainer="LMSContext">
+    <EntitySetMapping Name="Book_Details">
+      <EntityTypeMapping TypeName="LibraryModel.Book_Details">
+        <MappingFragment StoreEntitySet="Book_Details">
+          <ScalarProperty Name="ISBN_Code" ColumnName="ISBN_Code" />
+          <ScalarProperty Name="Book_Title" ColumnName="Book_Title" />
+          <ScalarProperty Name="Book_Author" ColumnName="Book_Author" />
+          <ScalarProperty Name="Publication_id" ColumnName="Publication_id" />
+          <ScalarProperty Name="Category_id" ColumnName="Category_id" />
+          <ScalarProperty Name="No_of_Copies_Actual" ColumnName="No_of_Copies_Actual" />
+          <ScalarProperty Name="No_of_Copies_Available" ColumnName="No_of_Copies_Available" />
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Borrower_Details">
+      <EntityTypeMapping TypeName="LibraryModel.Borrower_Details">
+        <MappingFragment StoreEntitySet="Borrower_Details">
+          <ScalarProperty Name="PKBorrower_id" ColumnName="PKBorrower_id" />
+          <ScalarProperty Name="Borrower_id" ColumnName="Borrower_id" />
+          <ScalarProperty Name="Borrower_Name" ColumnName="Borrower_Name" />
+          <ScalarProperty Name="Book_id" ColumnName="Book_id" />
+          <ScalarProperty Name="Borrowed_From_Date" ColumnName="Borrowed_From_Date" />
+          <ScalarProperty Name="Borrowed_To_Date" ColumnName="Borrowed_To_Date" />
+          <ScalarProperty Name="Issued_By" ColumnName="Issued_By" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category_Details">
+      <EntityTypeMapping TypeName="LibraryModel.Category_Details">
+        <MappingFragment StoreEntitySet="Category_Details">
+          <ScalarProperty Name="Category_id" ColumnName="Category_id" />
+          <ScalarProperty Name="Category_Name" ColumnName="Category_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Publication_Details">
+      <EntityTypeMapping TypeName="LibraryModel.Publication_Details">
+        <MappingFragment StoreEntitySet="Publication_Details">
+          <ScalarProperty Name="Publication_id" ColumnName="Publication_id" />
+          <ScalarProperty Name="Publisher_Name" ColumnName="Publisher_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Student_Details">
+      <EntityTypeMapping TypeName="LibraryModel.Student_Details">
+        <MappingFragment StoreEntitySet="Student_Details">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Student_id" ColumnName="Student_id" />
+          <ScalarProperty Name="Student_Name" ColumnName="Student_Name" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Date_Of_Birth" ColumnName="Date_Of_Birth" />
+          <ScalarProperty Name="Program" ColumnName="Program" />
+          <ScalarProperty Name="Contact_No" ColumnName="Contact_No" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblroles">
+      <EntityTypeMapping TypeName="LibraryModel.tblrole">
+        <MappingFragment StoreEntitySet="tblroles">
+          <ScalarProperty Name="roleId" ColumnName="roleId" />
+          <ScalarProperty Name="roleName" ColumnName="roleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUsers">
+      <EntityTypeMapping TypeName="LibraryModel.tblUser">
+        <MappingFragment StoreEntitySet="tblUser">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="confirm_password" ColumnName="confirm_password" />
+          <ScalarProperty Name="roleid" ColumnName="roleid" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="IsEmailVerified" ColumnName="IsEmailVerified" />
+          <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Events">
+      <EntityTypeMapping TypeName="LibraryModel.Event">
+        <MappingFragment StoreEntitySet="Events">
+          <ScalarProperty Name="IsFullDay" ColumnName="IsFullDay" />
+          <ScalarProperty Name="ThemeColor" ColumnName="ThemeColor" />
+          <ScalarProperty Name="End_Time" ColumnName="End_Time" />
+          <ScalarProperty Name="Start" ColumnName="Start" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

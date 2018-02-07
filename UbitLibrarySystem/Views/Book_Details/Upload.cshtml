@@ -1,0 +1,32 @@
+﻿@model UbitLibrarySystem.Models.Book_Details
+@{
+   
+
+    var ISBN_Code = ViewData["ISBN_Code"];
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Upload</title>
+</head>
+<body>
+    <div> 
+
+        @using (Html.BeginForm("Upload", "Book_Details", new { ISBN_Code = ISBN_Code }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+          
+                <input type="file" name="file" />
+           
+    <input type="submit" value="Upload" />
+
+        }
+
+
+
+    </div>
+</body>
+</html>

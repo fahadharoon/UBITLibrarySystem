@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LibraryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Book_Details">
+    <Key>
+      <PropertyRef Name="ISBN_Code" />
+    </Key>
+    <Property Name="ISBN_Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Book_Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Book_Author" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Publication_id" Type="Int32" Nullable="false" />
+    <Property Name="Category_id" Type="Int32" Nullable="false" />
+    <Property Name="No_of_Copies_Actual" Type="Int32" Nullable="false" />
+    <Property Name="No_of_Copies_Available" Type="Int32" Nullable="false" />
+    <Property Name="ImagePath" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Borrower_Details" Relationship="Self.Book_id_FK" FromRole="Book_Details" ToRole="Borrower_Details" />
+    <NavigationProperty Name="Category_Details" Relationship="Self.Category_id_FK" FromRole="Book_Details" ToRole="Category_Details" />
+    <NavigationProperty Name="Publication_Details" Relationship="Self.Publication_id_FK" FromRole="Book_Details" ToRole="Publication_Details" />
+  </EntityType>
+  <EntityType Name="Borrower_Details">
+    <Key>
+      <PropertyRef Name="PKBorrower_id" />
+    </Key>
+    <Property Name="PKBorrower_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Borrower_id" Type="Int32" Nullable="false" />
+    <Property Name="Borrower_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Book_id" Type="Int32" Nullable="false" />
+    <Property Name="Borrowed_From_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Borrowed_To_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Issued_By" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Book_Details" Relationship="Self.Book_id_FK" FromRole="Borrower_Details" ToRole="Book_Details" />
+    <NavigationProperty Name="tblUser" Relationship="Self.Issued_By_FK" FromRole="Borrower_Details" ToRole="tblUser" />
+  </EntityType>
+  <EntityType Name="Category_Details">
+    <Key>
+      <PropertyRef Name="Category_id" />
+    </Key>
+    <Property Name="Category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Category_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Book_Details" Relationship="Self.Category_id_FK" FromRole="Category_Details" ToRole="Book_Details" />
+  </EntityType>
+  <EntityType Name="Publication_Details">
+    <Key>
+      <PropertyRef Name="Publication_id" />
+    </Key>
+    <Property Name="Publication_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Publisher_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Book_Details" Relationship="Self.Publication_id_FK" FromRole="Publication_Details" ToRole="Book_Details" />
+  </EntityType>
+  <EntityType Name="Student_Details">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Student_id" Type="Int32" Nullable="false" />
+    <Property Name="Student_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Date_Of_Birth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Program" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Contact_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblrole">
+    <Key>
+      <PropertyRef Name="roleId" />
+    </Key>
+    <Property Name="roleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="roleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblUsers" Relationship="Self.FK_tblUser_tblroles" FromRole="tblroles" ToRole="tblUser" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="confirm_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="roleid" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsEmailVerified" Type="Boolean" />
+    <Property Name="ActivationCode" Type="Guid" />
+    <NavigationProperty Name="Borrower_Details" Relationship="Self.Issued_By_FK" FromRole="tblUser" ToRole="Borrower_Details" />
+    <NavigationProperty Name="tblrole" Relationship="Self.FK_tblUser_tblroles" FromRole="tblUser" ToRole="tblroles" />
+  </EntityType>
+  <Association Name="Book_id_FK">
+    <End Role="Book_Details" Type="Self.Book_Details" Multiplicity="1" />
+    <End Role="Borrower_Details" Type="Self.Borrower_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Book_Details">
+        <PropertyRef Name="ISBN_Code" />
+      </Principal>
+      <Dependent Role="Borrower_Details">
+        <PropertyRef Name="Book_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Category_id_FK">
+    <End Role="Category_Details" Type="Self.Category_Details" Multiplicity="1" />
+    <End Role="Book_Details" Type="Self.Book_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category_Details">
+        <PropertyRef Name="Category_id" />
+      </Principal>
+      <Dependent Role="Book_Details">
+        <PropertyRef Name="Category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Publication_id_FK">
+    <End Role="Publication_Details" Type="Self.Publication_Details" Multiplicity="1" />
+    <End Role="Book_Details" Type="Self.Book_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Publication_Details">
+        <PropertyRef Name="Publication_id" />
+      </Principal>
+      <Dependent Role="Book_Details">
+        <PropertyRef Name="Publication_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Issued_By_FK">
+    <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+    <End Role="Borrower_Details" Type="Self.Borrower_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Borrower_Details">
+        <PropertyRef Name="Issued_By" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUser_tblroles">
+    <End Role="tblroles" Type="Self.tblrole" Multiplicity="1" />
+    <End Role="tblUser" Type="Self.tblUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblroles">
+        <PropertyRef Name="roleId" />
+      </Principal>
+      <Dependent Role="tblUser">
+        <PropertyRef Name="roleid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LMSContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Book_Details" EntityType="Self.Book_Details" />
+    <EntitySet Name="Borrower_Details" EntityType="Self.Borrower_Details" />
+    <EntitySet Name="Category_Details" EntityType="Self.Category_Details" />
+    <EntitySet Name="Publication_Details" EntityType="Self.Publication_Details" />
+    <EntitySet Name="Student_Details" EntityType="Self.Student_Details" />
+    <EntitySet Name="tblroles" EntityType="Self.tblrole" />
+    <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+    <AssociationSet Name="Book_id_FK" Association="Self.Book_id_FK">
+      <End Role="Book_Details" EntitySet="Book_Details" />
+      <End Role="Borrower_Details" EntitySet="Borrower_Details" />
+    </AssociationSet>
+    <AssociationSet Name="Category_id_FK" Association="Self.Category_id_FK">
+      <End Role="Category_Details" EntitySet="Category_Details" />
+      <End Role="Book_Details" EntitySet="Book_Details" />
+    </AssociationSet>
+    <AssociationSet Name="Publication_id_FK" Association="Self.Publication_id_FK">
+      <End Role="Publication_Details" EntitySet="Publication_Details" />
+      <End Role="Book_Details" EntitySet="Book_Details" />
+    </AssociationSet>
+    <AssociationSet Name="Issued_By_FK" Association="Self.Issued_By_FK">
+      <End Role="tblUser" EntitySet="tblUsers" />
+      <End Role="Borrower_Details" EntitySet="Borrower_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUser_tblroles" Association="Self.FK_tblUser_tblroles">
+      <End Role="tblroles" EntitySet="tblroles" />
+      <End Role="tblUser" EntitySet="tblUsers" />
+    </AssociationSet>
+    <EntitySet Name="Events" EntityType="LibraryModel.Event" />
+  </EntityContainer>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="EventID" />
+    </Key>
+    <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Subject" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Start" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="End_Time" Type="DateTime" Precision="3" />
+    <Property Name="ThemeColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsFullDay" Type="Boolean" Nullable="false" />
+  </EntityType>
+</Schema>

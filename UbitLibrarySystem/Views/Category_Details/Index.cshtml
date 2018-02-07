@@ -1,0 +1,122 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<UbitLibrarySystem.Models.Category_Details>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    #customers {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #customers td, #customers th {
+            border: 1px solid #222d32;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #222d32;
+            color: white;
+        }
+</style>
+
+
+<p class="btn btn-info fa fa-edit">
+    @Html.ActionLink("Create New", "Create", null, new { style = "color:black" })
+</p>
+<br />
+<br />
+<div align="center">
+    @using (Html.BeginForm("Index", "Category_Details", FormMethod.Get))
+    {
+        <b>Search By : </b>@Html.RadioButton("searchBy", "Id", true)<text> Id    </text>
+        @Html.RadioButton("searchBy", "Name")<text> Name    </text>
+
+        @Html.TextBox("search")<input type="submit" value="Search" />
+    }
+</div>
+<br />
+<br />
+
+<div style="overflow-x : auto">
+
+<table id="customers" border="1" style="width:500px" align="center">
+    <tr>
+        
+        <th style="text-align:center">
+
+            @Html.ActionLink("Name", "Index", new
+       {
+           sortBy = ViewBag.SortNameParameter
+                  ,
+           searchBy = Request.QueryString["searchBy"],
+           search = Request["search"]
+
+       },new { style = "color:white"})
+            
+        </th>
+        <th style="text-align:center  ">  Actions  </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Category_Name)
+        </td>
+        <td><p class="btn btn-default btn-sm fa fa-edit  ">
+            @Html.ActionLink("Edit", "Edit", new { id=item.Category_id }, new { style = "color:black" }) 
+            </p>
+        <p class="btn btn-default btn-sm fa fa-book" >
+            @Html.ActionLink("Details", "Details", new { id=item.Category_id } , new { style = "color:black" }) 
+            </p>
+        <p class="btn btn-default btn-sm fa fa-remove">
+            @Html.ActionLink("Delete", "Delete", new { id=item.Category_id } , new { style = "color:black" })
+            </p>
+        </td>
+    </tr>
+}
+
+</table>
+<center>
+    @Html.PagedListPager(Model, page =>
+Url.Action("Index", new
+{
+    page,
+    searchBy = Request.QueryString["searchBy"]
+    ,
+    search = Request.QueryString["search"],
+    sortBy = Request["sortBy"]
+}), new PagedListRenderOptions()
+{ Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true, DisplayItemSliceAndTotal = true })
+</center>
+
+</div>
+

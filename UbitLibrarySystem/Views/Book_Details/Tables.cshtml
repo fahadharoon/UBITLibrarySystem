@@ -1,0 +1,139 @@
+﻿
+@model IEnumerable<UbitLibrarySystem.Models.Book_Details>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@*@{
+    Layout = null;
+}*@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> Book Details</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css">
+    <link href="~/Tables/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <h3 style="text-align:center">Book Details</h3>
+    <br />
+    <p class="btn btn-primary">
+        @Html.ActionLink("Create New", "Create", null, new { style = "color:black" })
+    </p>
+    <br />
+    <br />
+
+    <p>
+        @using (Html.BeginForm("Tables", "Book_Details", FormMethod.Get))
+        {
+            <b>Search By : </b>@Html.RadioButton("searchBy", "Title", true)<text>Title    </text>
+            @Html.RadioButton("searchBy", "Author")<text>Author    </text>
+
+            @Html.TextBox("search")<input type="submit" value="Search" />
+        }
+    </p>
+    <br />
+    <br />
+    <table class="container">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().ISBN_Code)
+                </th>
+                <th style="text-align: center">
+                    @Html.DisplayNameFor(model => model.First().Book_Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Book_Author)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().No_of_Copies_Actual)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().No_of_Copies_Available)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Category_Details.Category_Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Publication_Details.Publisher_Name)
+                </th>
+                <th>Edit</th>
+                <th>Details</th>
+                <th>Delete</th>
+                <th>Upload</th>
+                <th>Download</th>
+                </tr>
+        </thead>
+        <tbody>
+
+
+@foreach (var item in Model)
+{
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ISBN_Code)
+                </td>
+                <td style="text-align: center">
+                    @Html.DisplayFor(modelItem => item.Book_Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book_Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.No_of_Copies_Actual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.No_of_Copies_Available)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category_Details.Category_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Publication_Details.Publisher_Name)
+                </td>
+                <td>
+                    <p class="btn btn-success btn-xs">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ISBN_Code }, new { style = "color:black" })
+                    </p>
+                </td>
+                <td>
+                    <p class="btn btn-success btn-xs">
+                        @Html.ActionLink("Details", "Details", new { id = item.ISBN_Code }, new { style = "color:black" })
+                    </p>
+
+                </td>
+                <td>
+                    <p class="btn btn-danger btn-xs">
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ISBN_Code }, new { style = "color:black" })
+                    </p>
+                </td>
+                <td>
+                    <p class="btn btn-success btn-xs">
+                        @Html.ActionLink("Upload", "Upload", new { id = item.ISBN_Code }, new { style = "color:black" })
+                    </p>
+                </td>
+                <td>
+                    <p class="btn btn-success btn-xs">
+                        @Html.ActionLink("Download", "Download", new { id = item.ISBN_Code }, new { style = "color:black" })
+                    </p>
+                </td>
+                
+            </tr>
+            }
+        </tbody>
+        
+    </table>
+
+
+</body>
+</html>

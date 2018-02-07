@@ -1,0 +1,144 @@
+﻿
+@using PagedList;
+@using PagedList.Mvc;
+
+
+@model IPagedList<UbitLibrarySystem.Models.Student_Details>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    #customers {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #customers td, #customers th {
+            border: 1px solid #222d32;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #222d32;
+            color: white;
+        }
+</style>
+
+
+ <p class="btn btn-info fa fa-edit">
+    @Html.ActionLink("Create New", "Create",null, new { style = "color:black" })
+</p>
+
+<div align="center">
+    @using (Html.BeginForm("Index", "Student_Details", FormMethod.Get))
+    {
+        <b>Search By : </b>@Html.RadioButton("searchBy", "Id", true)<text> Id    </text>
+        @Html.RadioButton("searchBy", "Gender")<text> Gender   </text>
+        @Html.RadioButton("searchBy", "Name")<text> Name   </text>
+
+        @Html.TextBox("search")<input type="submit" value="Search" />
+    }
+</div>
+<br />
+<br />
+
+
+
+
+
+<div  style="overflow-x : auto">
+
+
+
+<table id="customers">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.First().Student_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Student_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Date_Of_Birth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Program)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Contact_No)
+        </th>
+        <th>Actions</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Student_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_Of_Birth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Program)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contact_No)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>
+
+<center>
+    @Html.PagedListPager(Model, page =>
+Url.Action("Index", new
+{
+    page,
+    searchBy = Request.QueryString["searchBy"]
+    ,
+    search = Request.QueryString["search"]
+}), new PagedListRenderOptions()
+{ Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true, DisplayItemSliceAndTotal = true })
+</center>
+
+</div>

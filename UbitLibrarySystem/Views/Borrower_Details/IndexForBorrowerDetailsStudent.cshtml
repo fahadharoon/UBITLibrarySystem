@@ -1,0 +1,179 @@
+﻿@model IEnumerable<UbitLibrarySystem.Models.Borrower_Details>
+@{
+    Layout = null;
+}
+@*<style>
+    table-wrapper {
+        overflow: auto;
+        height: 500px;
+        width: 500px;
+    }
+
+    /*table {
+        display: block;
+        overflow: scroll;
+        height: 400px;
+    }*/
+</style>*@
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    #customers {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #customers td, #customers th {
+            border: 1px solid #222d32;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #222d32;
+            color: white;
+        }
+</style>
+@*<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="table-wrapper">
+    <table class="table" border="1">
+        <thead style="background-color:#3c8dbc ">
+
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Borrower_id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Borrower_Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Borrowed_From_Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Borrowed_To_Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Book_Details.Book_Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Staff_Details.Staff_Name)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Borrower_id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Borrower_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Borrowed_From_Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Borrowed_To_Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Book_Details.Book_Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Staff_Details.Staff_Name)
+                    </td>
+                    <td>
+                       
+                        @Html.ActionLink("Details", "DetailsforBorrowerDetails", new { id = item.PKBorrower_id }) 
+                      
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>*@
+
+
+
+
+
+<table id="customers" >
+
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Borrower_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Borrower_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Borrowed_From_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Borrowed_To_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book_Details.Book_Title)
+            </th>
+           
+            
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Borrower_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Borrower_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Borrowed_From_Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Borrowed_To_Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book_Details.Book_Title)
+                </td>
+                @*<td>
+                    <button class="btn btn-primary">
+                        @Html.ActionLink("Details", "DetailsforBorrowerDetails", new { id = item.PKBorrower_id })
+                    </button>
+                </td>*@
+            </tr>
+
+        }
+    </tbody>
+</table>

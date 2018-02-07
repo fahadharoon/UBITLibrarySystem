@@ -1,0 +1,110 @@
+﻿
+@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<UbitLibrarySystem.Models.tblUser>
+
+@{
+    ViewBag.Title = "StudentListforStudent";
+    Layout = "~/Views/Shared/_LayoutForBooks.cshtml";
+}
+
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    #customers {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #customers td, #customers th {
+            border: 1px solid #222d32;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #222d32;
+            color: white;
+        }
+</style>
+
+
+
+<div align="center">
+    @using (Html.BeginForm("StudentListforStudent", "Student_Details", FormMethod.Get))
+    {
+        <b>Search By : </b>@Html.RadioButton("searchBy", "Name", true)<text>Name    </text>
+        @Html.RadioButton("searchBy", "Email")<text> Email   </text>
+
+        @Html.TextBox("search")<input type="submit" value="Search " id="search" class="btn btn-flat" />
+
+
+
+    }
+</div>
+
+
+
+<div class="container  col-lg-6" style="overflow-x : auto">
+    <table id="customers">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().email)
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+
+
+    <center>
+        @Html.PagedListPager(Model, page =>
+Url.Action("StudentListforStudent", new
+{
+    page,
+    searchBy = Request.QueryString["searchBy"],
+    search = Request.QueryString["search"],
+    sortBy = Request["sortBy"]
+}), new PagedListRenderOptions()
+{ Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true, DisplayItemSliceAndTotal = true })
+    </center>
+</div>

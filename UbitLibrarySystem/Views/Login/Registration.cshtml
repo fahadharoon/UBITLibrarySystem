@@ -1,0 +1,331 @@
+﻿@model UbitLibrarySystem.Models.tblUser
+
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+@*@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal" style= "
+            width: 400px;
+            height: 540px;
+            background-color: rgba(0,0,0,0.5);
+            margin: 0 auto;
+            margin-top: 40px;
+            padding-top: 10px;
+            padding-left: 50px;
+            -webkit-border-color: 15px;
+            -moz-border-color: 15px;
+            -ms-border-color: 15px;
+            -o-border-color: 15px;
+            border-color: 15px;
+            color: white;
+            font-weight: bolder;
+            -webkit-box-shadow: inset -4px -4px rgba(0,0,0,0.5);
+            box-shadow: inset -4px -4px rgba(0,0,0,0.5);
+            font-size: 18px;
+                                   ">
+
+      
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.password, "password", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.confirm_password, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.confirm_password, "password", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.confirm_password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.roleid, "roleid", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-10">
+                @Html.DropDownList("roleid", new SelectList(ViewBag.tblrole, "roleId", "roleName"), "Select User", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.roleid, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    
+
+       
+                        <div class="col-md-4 " style="margin-left: 240px;">
+                            <button>
+
+                                @Html.ActionLink("Login", "Login")
+                            </button>
+                            </div>
+
+
+}*@        
+
+        <!-- close aa -->
+        
+
+
+
+
+
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@
+
+
+
+<!--header-->
+@*<div class="header-w3l">
+    <h1>
+        <span>U</span>bit
+        <span>L</span>ibrary
+        <span>S</span>ystem
+    </h1>
+</div>*@
+<!--//header-->
+@*<div class="main-content-agile">
+    <div class="sub-main-w3">
+
+        <div class="header-w3l">
+            <h1 style="font-size:35px;">
+                <span>R</span>egistration
+
+            </h1>
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger " })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-sm-3 ", @style = "color: white" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control pom-agile ", @placeholder = "Name" } })
+                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-sm-3 ", @style = "color: white" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control pom-agile ", @placeholder = "E-mail" } })
+                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-sm-4 ", @style = "color: white" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.password, "password", new { htmlAttributes = new { @class = "form-control pom-agile", @placeholder = "Password" } })
+
+                    @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger " })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.confirm_password, htmlAttributes: new { @class = "control-label col-sm-6", @style = "color: white" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.confirm_password, "password", new { htmlAttributes = new { @class = "form-control pom-agile", @placeholder = "Confirm Password" } })
+                    @Html.ValidationMessageFor(model => model.confirm_password, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.roleid, "roleid", htmlAttributes: new { @class = "control-label col-sm-4", @style = "color: white" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("roleid", new SelectList(ViewBag.tblrole, "roleId", "rolename"), "Select Roles", htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.roleid, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+
+            @*<div class="form-group">
+                @Html.LabelFor(model => model.roleid, "Select User", htmlAttributes: new { @class = "control-label col-sm-5", @style = "color: white" })
+                <div class="col-md-10">
+                    @Html.DropDownList("roleid", new SelectList(ViewBag.tblrole, "roleId", "rolename"), "Select Roles", htmlAttributes: new { @class = "form-control pom-agile" })
+                    @Html.ValidationMessageFor(model => model.roleid, "", new { @class = "text-danger" })
+                    <br />
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10 right-w3l">
+                    <input type="submit" value="Create" />
+                    <a href="~/Login/Login" class="btn btn-primary">Login</a>
+
+                </div>
+
+            </div>
+            <div class="footer">
+                <p>
+                    <br /><br /><br />
+                    <br /><br /><br />
+                    <br /><br /><br />
+                    <br /><br /><br />
+                    <br /><br /><br />
+                    <br /><br /><br />
+                    <br /><br /><br />
+
+
+
+
+
+                </p>
+
+            </div>
+        }
+
+    </div>
+
+</div>*@
+
+
+@if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+{
+    if (ViewBag.Message != null)
+    {
+        <div class="alert alert-success">
+            <strong>Success!</strong>@ViewBag.Message
+        </div>
+    }
+}
+else
+{
+    <div class="header-w3l">
+            <h1>
+                <span>U</span>bit
+                <span>L</span>ibrary
+                <span>S</span>ystem
+            </h1>
+        </div>
+    <!--//header-->
+    <div class="main-content-agile">
+        <div class="sub-main-w3">
+
+            <div class="header-w3l">
+                <h1 style="font-size:35px;">
+                    <span>R</span>egistration
+
+                </h1>
+            </div>
+            @using (Html.BeginForm())
+            {
+
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-sm-3 ", @style = "color: white" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control pom-agile ", @placeholder = "Name" } })
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-sm-3 ", @style = "color: white" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control pom-agile ", @placeholder = "E-mail" } })
+                        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-sm-4 ", @style = "color: white" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.password, "password", new { htmlAttributes = new { @class = "form-control pom-agile", @placeholder = "Password" } })
+
+                        @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger " })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.confirm_password, htmlAttributes: new { @class = "control-label col-sm-6", @style = "color: white" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.confirm_password, "password", new { htmlAttributes = new { @class = "form-control pom-agile", @placeholder = "Confirm Password" } })
+                        @Html.ValidationMessageFor(model => model.confirm_password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.roleid, "Select User", htmlAttributes: new { @class = "control-label col-sm-4", @style = "color: white" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("roleid", new SelectList(ViewBag.tblroles, "roleId", "rolename"), "Select Roles", htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.roleid, "", new { @class = "text-danger" })
+                        <br />
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10 right-w3l">
+                        <input type="submit" value="Create" />
+                        <a href="~/Login/Login" class="btn btn-primary">Login</a>
+
+                    </div>
+
+                </div>
+                <div class="footer">
+                    <p>
+                        <br /><br /><br />
+                        <br /><br /><br />
+                        <br /><br /><br />
+                        <br /><br /><br />
+                        <br /><br /><br />
+                        <br /><br /><br />
+                        <br /><br /><br />
+
+                    </p>
+
+                </div>
+            }
+            </div>
+
+            
+        </div>
+
+        
+
+
+        
+
+            if (ViewBag.Message != null)
+            {
+            <div class="alert alert-danger">
+                <strong>Error!</strong>@ViewBag.Message
+            </div>
+            }
+
+            }
+        
+
+
+    
+
+
+
+
+
+
+
+
+
+        

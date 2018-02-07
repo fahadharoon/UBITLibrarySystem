@@ -1,0 +1,25 @@
+﻿@model UbitLibrarySystem.Models.Publication_Details
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Publisher_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Publisher_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Publication_id }) |
+    @Html.ActionLink("Back to Publishers", "Index")
+</p>

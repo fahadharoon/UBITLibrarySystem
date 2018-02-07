@@ -1,0 +1,68 @@
+﻿@model UbitLibrarySystem.Models.Borrower_Details
+
+@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+
+<div>
+    <h4>Borrower_Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Borrower_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Borrower_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Borrower_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Borrower_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Borrowed_From_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Borrowed_From_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Borrowed_To_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Borrowed_To_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Book_Details.Book_Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Book_Details.Book_Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Staff_Details.Staff_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Staff_Details.Staff_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    
+    @Html.ActionLink("Back to List", "IndexForBorrowerDetailsStudent")
+</p>

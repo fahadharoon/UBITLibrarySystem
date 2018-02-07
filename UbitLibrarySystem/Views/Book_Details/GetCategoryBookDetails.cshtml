@@ -1,0 +1,96 @@
+﻿@model UbitLibrarySystem.Models.Book_Details
+
+
+
+<div class="row">
+
+    <br />
+    <br />
+    <div class="col-md-3">
+
+        <img src="@Model.ImagePath">
+
+
+
+
+
+
+
+
+    </div>
+    <br />
+
+
+    <div class="col-md-9">
+
+
+        <div class="tabbable">
+
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Book_Title)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Book_Title)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Book_Author)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Book_Author)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.No_of_Copies_Actual)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.No_of_Copies_Actual)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.No_of_Copies_Available)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.No_of_Copies_Available)
+                </dd>
+
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Category_Details.Category_Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Category_Details.Category_Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Publication_Details.Publisher_Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Publication_Details.Publisher_Name)
+                </dd>
+
+            </dl>
+
+
+
+            <div class="tab-content">
+
+
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+</div>
+

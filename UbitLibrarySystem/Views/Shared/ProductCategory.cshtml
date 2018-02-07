@@ -1,0 +1,22 @@
+﻿@model List<UbitLibrarySystem.Models.Category_Details>
+
+<div class="col-xs-2">
+    <div class="left-sidebar">
+        <h2>Category</h2>
+        <div class="panel-group category-products" id="accordian">
+            <!--category-productsr-->
+
+            @foreach (var category in Model)
+            {
+
+                <div class="panel panel-default ">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><a href="@Url.Action("Category","Book_Details",new { id=category.Category_id})">@category.Category_Name</a></h4>
+                    </div>
+                </div>
+            }
+
+        </div><!--/category-products-->
+
+    </div>
+</div>

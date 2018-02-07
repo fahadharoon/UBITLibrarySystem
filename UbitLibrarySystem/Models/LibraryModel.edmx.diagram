@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="271654b9f6e949f19ca1c9e68a342258" Name="Diagram1">
+        <EntityTypeShape EntityType="LibraryModel.Book_Details" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.Borrower_Details" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.Category_Details" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.Publication_Details" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.Student_Details" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.tblrole" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.tblUser" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <AssociationConnector Association="LibraryModel.Book_id_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.Category_id_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.Publication_id_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.Issued_By_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK_tblUser_tblroles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="LibraryModel.Event" Width="1.5" PointX="7.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

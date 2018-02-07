@@ -1,0 +1,223 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+
+@model IPagedList<UbitLibrarySystem.Models.Book_Details>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@*<style>
+        table-wrapper {
+            overflow: auto;
+            height: 500px;
+            width: 500px;
+        }
+
+        table {
+            display: block;
+
+            height: 400px;
+        }
+    </style>*@
+
+
+<style>
+
+
+   
+    table {
+        border-collapse: collapse;
+   
+     
+       width: 100%;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    #customers {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      
+    }
+
+        #customers td, #customers th {
+            border: 1px solid #222d32;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #222d32;
+            color: white;
+        }
+</style>
+
+    
+    <br />
+    <p class="btn btn-info fa fa-edit">
+        @Html.ActionLink("Create New", "Create", null, new { style = "color:black" })
+    </p>
+    <br />
+    <br />
+
+    <div align="center">
+        @using (Html.BeginForm("Index", "Book_Details", FormMethod.Get))
+        {
+            <b>Search By : </b>@Html.RadioButton("searchBy", "Title", true)<text>Title    </text>
+            @Html.RadioButton("searchBy", "Author")<text>Author    </text>
+            @Html.RadioButton("searchBy", "Category")<text>Category    </text>
+
+
+            @Html.TextBox("search")<input type="submit" value="Search " id="search" class="btn btn-flat" />
+
+
+
+        }
+    </div>
+
+
+    <br />
+    <br />
+    <div style="overflow-x : auto">
+    <table id="customers" border="1">
+        <thead style="background-color:#3c8dbc ">
+            <tr>
+
+                <th style="text-align:center">
+                    @Html.ActionLink("Title", "Index", new
+                   {
+                       sortBy = ViewBag.SortTitleParameter
+                  ,
+                       searchBy = Request.QueryString["searchBy"],
+                       search = Request["search"]
+                   }, new { style = "color:white" })
+                </th>
+
+                <th style="text-align:center">
+                    @Html.ActionLink("Author", "Index", new
+                   {
+                       sortBy = ViewBag.SortAuthorParameter
+                  ,
+                       searchBy = Request.QueryString["searchBy"],
+                       search = Request["search"]
+                   }, new { style = "color:white" })
+                </th>
+
+
+                <th style="text-align:center">
+                    @Html.DisplayNameFor(model => model.First().No_of_Copies_Actual)
+                </th>
+                <th style="text-align:center">
+                    @Html.DisplayNameFor(model => model.First().No_of_Copies_Available)
+                </th>
+
+                <th style="text-align:center">
+                    @Html.DisplayNameFor(model => model.First().Category_Details.Category_Name)
+                </th>
+                <th style="text-align:center">
+                    @Html.DisplayNameFor(model => model.First().Publication_Details.Publisher_Name)
+                </th>
+                <th style="width:inherit">Edit</th>
+                <th style="width:inherit">Details</th>
+                <th style="width:inherit">Delete</th>
+                <th style="width:inherit">Upload</th>
+                <th style="width:inherit">Image</th>
+                <th style="width:inherit">Download</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Book_Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Book_Author)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.No_of_Copies_Actual)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.No_of_Copies_Available)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category_Details.Category_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Publication_Details.Publisher_Name)
+                    </td>
+                    <td>
+                        <p class="btn btn-default btn-xs fa fa-edit  ">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ISBN_Code }, new { style = "color:black" })
+
+                        </p>
+                    </td>
+                    <td>
+                        <p class="btn btn-default btn-xs fa fa-book  ">
+                            @Html.ActionLink("Details", "Details", new { id = item.ISBN_Code }, new { style = "color:black" })
+                        </p>
+
+                    </td>
+                    <td>
+                        <p class="btn btn-default btn-xs fa fa-remove  ">
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ISBN_Code }, new { style = "color:black" })
+                        </p>
+                    </td>
+                    <td>
+                        <p class="btn btn-default btn-xs fa fa-upload ">
+                            @Html.ActionLink("Upload", "Upload", new { id = item.ISBN_Code }, new { style = "color:black" })
+                        </p>
+                    </td>
+                    <td>
+                        <p class="btn btn-default btn-xs fa fa-upload  ">
+                            @Html.ActionLink("Image", "UploadTitleImage", new { id = item.ISBN_Code }, new { style = "color:black" })
+                        </p>
+                    </td>
+                    <td>
+                        <p class="btn btn-default btn-xs fa fa-download  ">
+                            @Html.ActionLink("Download", "Download", new { id = item.ISBN_Code }, new { style = "color:black" })
+                        </p>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+    <br />
+    <br />
+</div>
+
+    <center>
+        @Html.PagedListPager(Model, page =>
+Url.Action("Index", new
+{
+    page,
+    searchBy = Request.QueryString["searchBy"],
+    search = Request.QueryString["search"],
+    sortBy = Request["sortBy"]
+}), new PagedListRenderOptions()
+{ Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true, DisplayItemSliceAndTotal = true })
+    </center>
+

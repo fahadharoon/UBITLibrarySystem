@@ -1,0 +1,91 @@
+﻿@model IEnumerable<UbitLibrarySystem.Models.Publication_Details>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> Book Details</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css">
+    <link href="~/Tables/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <h3 style="text-align:center">Book Details</h3>
+    <br />
+    <p class="btn btn-primary">
+        @Html.ActionLink("Create New", "Create", null, new { style = "color:black" })
+    </p>
+    <br />
+    <br />
+
+    <p>
+        @using (Html.BeginForm("Tables", "Publication_Details", FormMethod.Get))
+        {
+            <b>Search By : </b>@Html.RadioButton("searchBy", "Title", true)<text>Title    </text>
+            @Html.RadioButton("searchBy", "Author")<text>Author    </text>
+
+            @Html.TextBox("search")<input type="submit" value="Search" />
+        }
+    </p>
+    <br />
+    <br />
+    <table class="container">
+        <thead>
+            <tr>
+                <th style="text-align:center">
+                    @Html.DisplayNameFor(model => model.Publication_id)
+                </th>
+
+                <th style="text-align:center">
+                    @Html.DisplayNameFor(model => model.Publisher_Name)
+                </th>
+                
+
+                <th>Edit</th>
+                <th>Details</th>
+                <th>Delete</th>
+            </tr>
+
+        </thead>
+        <tbody>
+
+
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Publication_id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Publisher_Name)
+                    </td>
+                    <td>
+                        <p class="btn btn-success">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Publication_id }, new { style = "color:black" })
+                        </p>
+                        <p class="btn btn-success">
+                            @Html.ActionLink("Details", "Details", new { id = item.Publication_id }, new { style = "color:black" })
+                        </p>
+                        <p class="btn btn-danger">
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Publication_id }, new { style = "color:black" })
+                        </p>
+                    </td>
+
+
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+
+</body>
+</html>
+
